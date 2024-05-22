@@ -9,6 +9,10 @@ app.use(express.static('public'));
 const mathsteps = require('mathsteps');
 const steps = mathsteps.solveEquation('2x + 3x = 35');
 
+const math = require('mathjs');
+// console.log(steps.forEach());
+
+
 steps.forEach(step => {
     console.log("before change: " + step.oldEquation.ascii());  // e.g. before change: 2x + 3x = 35
     console.log("change: " + step.changeType);                  // e.g. change: SIMPLIFY_LEFT_SIDE
