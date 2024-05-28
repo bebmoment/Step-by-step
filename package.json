@@ -5,7 +5,8 @@
   "type": "commonjs",
   "module": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,9 @@
     "express": "^4.19.2",
     "mathsteps": "^0.2.0",
     "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "body-parser": "^1.20.2",
+    "nodemon": "^3.1.1"
   }
 }

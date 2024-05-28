@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-
+const bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded( {extended: false} ));
 const mathsteps = require('mathsteps');
-const steps = mathsteps.solveEquation('2x + 3x = 35');
+// const steps = mathsteps.solveEquation('2x + 3x = 35');
 
 const math = require('mathjs');
 // console.log(steps.forEach());
@@ -25,6 +26,19 @@ app.get('/about', (request, response) => response.render('about'));
 app.get('/algebra', (request, response) => response.render('algebra'));
 app.get('/limits', (request, response) => response.render('limits'));
 app.get('/derivatives', (request, response) => response.render('derivatives'));
+
+app.post('/algebra', (req, res) => {
+    solution = "";
+    staps = mathsteps.solveEquation(req.body.algebruh);
+    staps.forEach( (step) => {
+        solution += step.oldEquation.ascii() + '<br />';
+        solution += step.changeType + '<br />';
+        solution += step.newEquation.ascii() + '<br />';
+        // solution += step.substeps.length + '<br />';
+    } )
+
+    res.send(solution);
+});
 
 const port = 3000;
 app.listen(port, console.log(`Express server initialized on port ${port} `,'\n'));

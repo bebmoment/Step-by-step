@@ -9,9 +9,10 @@
 <body>
     <%- include('layouts/navbar'); -%>
         <h1>Algebruh</h1>
-        <form>
-            <input type="text" id="algebruh"><br>
-            <input type="button" value="Evaluate" onclick="go()">
+        <form method="post">
+            <input name="algebruh"></input><br>
+            <!-- <input type="button" value="Evaluate" onclick="go()"> -->
+            <button type="submit">Evaluate</button>
         </form>
 
         <button></button>
@@ -19,12 +20,12 @@
 
         <script>
             
-            function go() {
-                let answerText = document.getElementById("answer");
+            // function go() {
+            //     let answerText = document.getElementById("answer");
 
-                answerText.innerText = document.getElementById("algebruh").value;
-                console.log("inside evaluate yo");
-            }
+            //     answerText.innerText = document.getElementById("algebruh").value;
+            //     console.log("inside evaluate yo");
+            // }
                 
 
         </script>
