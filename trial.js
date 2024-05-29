@@ -1,5 +1,5 @@
 const mathsteps = require('mathsteps');
-const steps = mathsteps.solveEquation('x^2 - x - 2'); // returns empty array for a quadratic
+const steps = mathsteps.solveEquation('x^2 - x - 2 = 0'); // returns empty array for a quadratic
 console.log(steps);
 steps.forEach(step => {
     console.log("before change: " + step.oldEquation.ascii());  // e.g. before change: 2x + 3x = 35
