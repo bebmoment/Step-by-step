@@ -3,13 +3,25 @@
 
 <head>
     <title>Step by step: Algebra</title>
-    <script src="mathsteps.js" type="text/javascript"></script>
+    <script>
+        async function handleSubmit(event){
+            event.preventDeafult();
+            const form = event.target;
+            const formData= new FormData(form);
+            const response = await fetch(form.action, { 
+                method: form.method,
+                body: new URLSearchParams(formData)
+            });
+            const data = await response.json();
+            document.getElementByid('answer').innerText = `${data.processedInput}`;
+        }
+    </script>
 </head>
 
 <body>
     <%- include('layouts/navbar'); -%>
         <h1>Algebruh</h1>
-        <form method="post">
+        <form action="/algebra" method="post" onsubmit="handleSubmit(event)">
             <input name="algebruh"></input><br>
             <!-- <input type="button" value="Evaluate" onclick="go()"> -->
             <button type="submit">Evaluate</button>
@@ -17,18 +29,6 @@
 
         <button></button>
         <p id="answer"></p>
-
-        <script>
-            
-            // function go() {
-            //     let answerText = document.getElementById("answer");
-
-            //     answerText.innerText = document.getElementById("algebruh").value;
-            //     console.log("inside evaluate yo");
-            // }
-                
-
-        </script>
 </body>
 
 </html>

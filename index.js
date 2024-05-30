@@ -32,13 +32,16 @@ app.post('/algebra', (req, res) => {
     staps = mathsteps.solveEquation(req.body.algebruh);
     console.log(req.body.algebruh);
     staps.forEach( (step) => {
-        solution += step.oldEquation.ascii() + '<br />';
-        solution += step.changeType + '<br />';
-        solution += step.newEquation.ascii() + '<br />';
+        solution += step.oldEquation.ascii() + '\n';
+        solution += step.changeType + '\n';
+        solution += step.newEquation.ascii() + '\n';
         // solution += step.substeps.length + '<br />';
     } )
-
-    res.send(solution);
+    if (req.headers['content-type'] === 'application/json' ) {
+        res.json({ solution });
+    } else {
+        res.render('result', { solution });
+    }
 });
 
 const port = 3000;
