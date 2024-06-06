@@ -5,7 +5,7 @@
     <title>Step by step: Algebra</title>
     <script>
         async function handleSubmit(event){
-            event.preventDeafult();
+            // event.preventDefault();
             const form = event.target;
             const formData= new FormData(form);
             const response = await fetch(form.action, { 
@@ -13,8 +13,13 @@
                 body: new URLSearchParams(formData)
             });
             const data = await response.json();
-            document.getElementByid('answer').innerText = `${data.processedInput}`;
+            document.getElementById('answer').innerText = `${data.solution}`;
         }
+        // async function printOutAnswer() {
+        //     const response = await fetch('/algebra');
+        //     const theAnswer = await response.json();
+        //     document.getElementbyId('answer').innerText = `${theAnswer.solution}`;
+        // }
     </script>
 </head>
 

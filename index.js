@@ -37,6 +37,24 @@ app.post('/algebra', (req, res) => {
         solution += step.newEquation.ascii() + '\n';
         // solution += step.substeps.length + '<br />';
     } )
+    if ( req.headers['content-type'] === 'application/json') {
+        res.json({ solution });
+    }  else {
+        res.render('result', { solution });
+    } 
+    // res.json({ solution });
+});
+
+app.post('/derivatives', (req, res) => {
+    solution = "";
+    staps = mathsteps.solveEquation(req.body.algebruh);
+    console.log(req.body.algebruh);
+    staps.forEach( (step) => {
+        solution += step.oldEquation.ascii() + '\n';
+        solution += step.changeType + '\n';
+        solution += step.newEquation.ascii() + '\n';
+        // solution += step.substeps.length + '<br />';
+    } )
     if (req.headers['content-type'] === 'application/json' ) {
         res.json({ solution });
     } else {
