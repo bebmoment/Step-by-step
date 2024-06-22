@@ -10,5 +10,7 @@ const mathjs = require('mathjs');
 // });
 
 const diff = mathjs.derivative('x^2', 'x');
-console.log(diff);
+console.log(diff.toString());
+console.log(diff.args[0].value.concat(diff.args[1].name));
+console.log(mathjs.derivative(mathjs.parse('x^3'),'x').toString);
 // console.log(steps);
