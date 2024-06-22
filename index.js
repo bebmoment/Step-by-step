@@ -31,9 +31,9 @@ app.post('/algebra', (req, res) => {
     staps = mathsteps.solveEquation(req.body.algebruh);
     // console.log(req.body.algebruh);
     staps.forEach( (step) => {
-        solution += step.oldEquation.ascii() + '\n';
-        solution += step.changeType + '\n';
-        solution += step.newEquation.ascii() + '\n';
+        solution += step.oldEquation.ascii() + '<br />';
+        solution += step.changeType + '<br />';
+        solution += step.newEquation.ascii() + '<br />';
         // solution += step.substeps.length + '<br />';
     } )
     res.render('algebra', { solution });

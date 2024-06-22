@@ -26,14 +26,14 @@
 <body>
     <%- include('layouts/navbar'); -%>
         <h1>Algebruh</h1>
-        <form action="/algebra" method="post" onsubmit="handleSubmit(event)">
+        <form action="/algebra" method="post">
             <input name="algebruh"></input><br>
             <!-- <input type="button" value="Evaluate" onclick="go()"> -->
             <button type="submit">Evaluate</button>
         </form>
 
         <button></button>
-        <p>: <%= solution %> </p>
+        <p>: <%- solution %> </p>
 </body>
 
 </html>
