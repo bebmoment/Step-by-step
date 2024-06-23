@@ -41,7 +41,7 @@ app.post('/algebra', (req, res) => {
 });
 
 app.post('/derivatives', (req, res) => {
-    diff = mathjs.derivative(req.body.derivative, 'x');
+    diff = mathjs.derivative(req.body.derivative, req.body.wrt);
     // res.render('derivatives', {  solution: diff.args[0].value.concat(diff.args[1].name) });
     res.render('derivatives', { solution: diff.toString()});
 });

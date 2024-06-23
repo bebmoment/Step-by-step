@@ -3,6 +3,26 @@
 
 <head>
     <title>Step by step: Derivatives</title>
+    <style>
+        #derivative {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #wrt {
+            width: 5%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
@@ -10,7 +30,10 @@
         <h1>Derivatives</h1>
         <p>I can't tell the difference</p>
         <form action="/derivatives" method="post">
-            <input name="derivative"></input><br>
+            <label for="derivative">Take the derivative of</label>
+            <input name="derivative" id="derivative" type="text"></input><br>
+            <label for="wrt">With respect to</label>
+            <input name="wrt" id="wrt" type="text"></input><br>
             <button type="submit">Differentiate</button>
         </form>
 
