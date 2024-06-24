@@ -1,12 +1,19 @@
 <nav>
     <ul>
-        <li><a href="/">HOME</a></li> <!-- replace this with the logo as a link -->
-        <li><a href="algebra">ALGEBRA</a></li>
-        <li><a href="limits">LIMITS</a></li>
-        <li><a href="derivatives">DERIVATIVES</a></li>
+        <li id="HOME"><a href="/">HOME</a></li> <!-- replace this with the logo as a link -->
+        
         <li><a href="about">ABOUT</a></li>
+        <li><a href="derivatives">DERIVATIVES</a></li>
+        <li><a href="limits">LIMITS</a></li>
+        <li><a href="algebra">ALGEBRA</a></li>
     </ul>
     <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #HOME {
+            float: left
+        }
         ul {
             list-style-type: none;
             margin: 0;
@@ -16,7 +23,7 @@
         }
 
         li {
-            float: left;
+            float: right;
         }
 
         li a {

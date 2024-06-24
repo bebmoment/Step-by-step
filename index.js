@@ -1,3 +1,6 @@
+/*
+ * Perhaps I should just rebrand this to Algebruh, it's a much more recognizable and funnier name
+ */
 const express = require('express');
 const path = require('path');
 const app = express();

@@ -3,11 +3,55 @@
 
 <head>
 	<title>Step by step</title>
+	<style>
+		#flow {
+			margin: auto;
+			width: 50%;
+			text-align: center;
+			
+		}
+
+		/* a.button {
+    		padding: 1px 6px;
+    		border: 1px outset buttonborder;
+    		border-radius: 3px;
+    		background-color: #ddd;
+    		text-decoration: none;
+		} */
+
+		a.button:link,
+		a.button:visited {
+			background-color: #333;
+			color: white;
+			padding: 28px 50px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			box-shadow: 10px 10px 5px #ccc;
+		}
+		a.button:hover, a.button:active {
+  			background-color: #111;
+			
+		}
+	</style>
 </head>
 
 <body>
 	<%- include('layouts/navbar'); -%>
 		<h1>ALGEBRUH</h1>
+		<div id="flow">
+			<h2>What do you want to learn?</h2>
+			<a href="/algebra" class="button">ALGEBRA</a>
+			<a href="/derivatives" class="button">DERIVATIVES</a>
+		</div>
+		<h2>Math fact of the day:</h2>
+		<p>37 is commonly thought to be the most random number, making it not random</p>
+		<h2>Calculus lore drop of the day:</h2>
+		<p>"The integral sec y dy from zero to one sixth of pi is log to base e of the square root of 3 to the 64th
+			power of what?!" - Isaac Newton to Bill Nye</p><br>
+		<h3>What is Step by step?</h3>
+		<p>Step by step is an educational tool on the web tha thighlights the process of Algebra & Calculus. More <a
+				href="/about">here</a></p>
 </body>
 
 </html>
