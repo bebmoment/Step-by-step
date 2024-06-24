@@ -7,17 +7,18 @@
 
 <body>
     <%- include('layouts/navbar'); -%>
-        <h1>Limit</h1>
+        <h1>Limits (WIP)</h1>
         <p>I'm at my limit</p>
         <form action="/limits" method="post">
             <label for="limit">Take the limit of</label>
             <input name="limit" id="limit" type="text"></input><br>
             <label for="wrt">as</label>
             <input name="wrt" id="wrt" type="text"></input><br>
-            <label for="wrt">appoaches</label>
+            <label for="index">appoaches</label>
             <input name="index" id="index" type="text"></input><br>
             <button type="submit">Evaluate</button>
         </form>
+        <p>: <%- solution %> </p>
 </body>
 
 </html>
