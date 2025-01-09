@@ -9,6 +9,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mathsteps = require('mathsteps');
 const mathjs = require('mathjs');
+const rref = require('rref');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -32,6 +33,8 @@ app.get('/algebra', (request, response) => response.render('algebra', { solution
 app.get('/limits', (request, response) => response.render('limits', { solution: ""}));
 app.get('/derivatives', (request, response) => response.render('derivatives', { solution: "" }));
 
+app.get('/matrix', (request, response) => response.render('matrix', { solution: ""}));
+
 // Post requests and processing
 app.post('/algebra', (req, res) => {
     let solution = "";
@@ -43,6 +46,18 @@ app.post('/algebra', (req, res) => {
     } )
     res.render('algebra', { solution });
 });
+
+// TODO
+app.post('/matrix', (req, res) => {
+    const reduced = rref([
+        [req.body.x1, req.body.y1, req.body.z1, req.body.a],
+        [req.body.x2, req.body.y2, req.body.z2, req.body.b],
+        [req.body.x3, req.body.y3, req.body.z3, req.body.c]
+    ])
+    const solution = `x = ${reduced[0][3]} <br/> y = ${reduced[1][3]} <br/> z = ${reduced[2][3]} <br/>`
+    res.render('matrix', { solution })
+})
+
 
 app.post('/derivatives', (req, res) => {
     const diff = mathjs.derivative(req.body.derivative, req.body.wrt);

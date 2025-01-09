@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Step by step: Matrix</title>
+    <style>
+        input {
+            width: 5%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('layouts/navbar'); -%>
+        <h1>Matrix</h1>
+        <form action="/matrix" method="post">
+            <input type="number" name="x1"></input><input type="number" name="y1"></input><input type="number" name="z1"></input><input type="number" name="a"></input><br>
+            <input type="number" name="x2"></input><input type="number" name="y2"></input><input type="number" name="z2"></input><input type="number" name="b"></input><br>
+            <input type="number" name="x3"></input><input type="number" name="y3"></input><input type="number" name="z3"></input><input type="number" name="c"></input><br>
+            <button type="submit">Solve</button>
+        </form>
+        
+        <p><%- solution %> </p>
+</body>
+
+</html>
