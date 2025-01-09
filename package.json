@@ -18,6 +18,7 @@
     "mathjs": "^13.0.0",
     "mathsteps": "^0.2.0",
     "node-fetch": "^3.3.2",
+    "python-shell": "^5.0.0",
     "rref": "^0.0.1"
   },
   "devDependencies": {

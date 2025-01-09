@@ -1,5 +1,6 @@
 /*
  * Perhaps I should just rebrand this to Algebruh, it's a much more recognizable and funnier name
+ * I started doing that
  */
 
 // Setup
@@ -10,21 +11,12 @@ const bodyParser = require('body-parser');
 const mathsteps = require('mathsteps');
 const mathjs = require('mathjs');
 const rref = require('rref');
+const {PythonShell} = require('python-shell', 'text');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: false} ));
-
-/* Example parsing of the steps
-const steps = mathsteps.solveEquation('2x + 3x = 35');
-steps.forEach(step => {
-    console.log("before change: " + step.oldEquation.ascii());  // e.g. before change: 2x + 3x = 35
-    console.log("change: " + step.changeType);                  // e.g. change: SIMPLIFY_LEFT_SIDE
-    console.log("after change: " + step.newEquation.ascii());   // e.g. after change: 5x = 35
-    console.log("# of substeps: " + step.substeps.length);      // e.g. # of substeps: 2
-});
-*/
 
 // Initial Rendering
 app.get('/', (request, response) => response.render('index'));
@@ -47,7 +39,7 @@ app.post('/algebra', (req, res) => {
     res.render('algebra', { solution });
 });
 
-// TODO
+// TODO: make it work for any row and column matrix
 app.post('/matrix', (req, res) => {
     const reduced = rref([
         [req.body.x1, req.body.y1, req.body.z1, req.body.a],
@@ -63,17 +55,15 @@ app.post('/derivatives', (req, res) => {
     const diff = mathjs.derivative(req.body.derivative, req.body.wrt);
     res.render('derivatives', { solution: diff.toString()});
 });
-/* WIP LIMIT PROCESSING
-app.post('/limits', (req, res) => {
-    const variable = req.body.wrt;
-    res.render('limits', { solution: mathjs.evaluate(req.body.limit, {x: req.body.index} ) } )
-})
-*/
 
-// Placeholder limit message
 app.post('/limits', (req, res) => {
-    res.render('limits', { solution: "Not yet available"})
+    PythonShell.run('limit.py', {
+        mode: 'text',
+        pythonOptions: ['-u'],
+        args: [req.body.limit, req.body.wrt, req.body.index]
+    }).then((message) => res.render('limits', {solution: message[0]}))
 })
+
 
 // Initialization message
 const port = 3000;

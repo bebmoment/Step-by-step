@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>Step by step: Algebra</title>
+    <title>Algebruh: Limits</title>
 </head>
 
 <body>
     <%- include('layouts/navbar'); -%>
-        <h1>Limits (WIP)</h1>
+        <h1>Limits</h1>
         <p>I'm at my limit</p>
         <form action="/limits" method="post">
             <label for="limit">Take the limit of</label>
@@ -18,7 +18,13 @@
             <input name="index" id="index" type="text"></input><br>
             <button type="submit">Evaluate</button>
         </form>
-        <p>: <%- solution %> </p>
+        <p><%- solution %> </p>
+        <h2>Things to note:</h2>
+        <p>Euler's number: E</p>
+        <p>Natural log: log()</p>
+        <p>Log base b of a: log(a, b)</p>
+        <p>+Infinity: oo</p>
+        <p>-Infinity: -oo</p>
 </body>
 
 </html>
